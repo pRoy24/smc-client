@@ -29,10 +29,8 @@ export default class PublisherHome extends Component {
          <Col lg={2}>
            <Link to="/app/publisher/list_active">Active Campaigns</Link>
          </Col>
-         <Col lg={2}>
-           <Link to="/app/publisher/list_expired">Expired Campaigns</Link>
-         </Col>
-         <Col lg={{span: 2, offset: 6}}>
+ 
+         <Col lg={{span: 2, offset: 8}}>
            <Link to="/app/publisher/create">New Campaign</Link>
          </Col>
        </Row>

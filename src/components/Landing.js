@@ -7,7 +7,7 @@ import {Link, withRouter} from 'react-router-dom';
 class Landing extends Component {
   redirectToHome = () => {
     const {history} = this.props;
-    history.push('/app');
+    history.push('/app/campaign');
   }
   
   render() {
@@ -16,11 +16,14 @@ class Landing extends Component {
         <div className="app-landing-text-container">
           Superfluid marketing campaigns
           <div>
-            Get better engagement and metrics.
-            Pay out streams for engagement.
+            <div>Get better engagement and metrics.</div>
             <div>
-              <Button onClick={this.redirectToHome}>
-                 View App
+              Payout a continuous stream to your marketers based on performance metrics.
+            </div>
+            <div>Pay out streams for engagement.</div>
+            <div>
+              <Button onClick={this.redirectToHome} className="primary-btn landing-btn">
+                 Go to App
               </Button>
             </div>
           </div>

@@ -51,9 +51,9 @@ class NewCampaign extends Component {
           <div>The payouts will be made seamlessly according to the specified payout parameters and interval using SuperFluid finance.</div>
         </div>
         <div>
-          Ready to begin?
+          <div>Ready to begin?</div>
           <Button onClick={this.createCampaignWallet}>Create campaign wallet.</Button>
-          Once created you need to fund the wallet with some Testnet Ether to process transaction fees.Array
+          <div>Once created you need to fund the wallet with some Testnet Ether to process transaction fees.</div>
         </div>
       </div>
       )
@@ -61,8 +61,10 @@ class NewCampaign extends Component {
     return (
       <div>
         <div>Your publication wallet address is {publisher.currentAccount ? publisher.currentAccount : ''}</div>
-        <div>Fund this account with Test ether here.</div>
-        <div>Click <Button onClick={this.generateTestDai}>here</Button> after funding to generate some xDai to fund your campaigns.</div>
+        <div>Fund this account with Test ether <a href="https://goerli-faucet.slock.it/">here</a></div>
+        <div>(Please wait until the transaction is confirmed before proceeding)</div>
+        <div>Now let's fund your campaign.</div>
+        <Button onClick={this.generateTestDai}>Generate xDai</Button>
       </div>
       )
   } else if (view === 'createCampaign') {
@@ -103,6 +105,7 @@ class CampaignDetails extends Component {
     let payload = this.state;
     payload.publisherWalletAddress = currentAccount;
     payload.publisherUserAddress = selectedAddress;
+    
     this.props.submitCampaignDetails(payload);
   }
   render() {
