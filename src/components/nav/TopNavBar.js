@@ -5,10 +5,13 @@ import AddressDisplay from '../common/AddressDisplay';
 
 export default class TopNavbar extends Component {
   render() {
-    console.log(this.props);
     const {user: {selectedAddress, selectedNetwork}} = this.props;
     let addressString = <span/>;
     let networkString = <span/>;
+    let wrongNetworkDisplay = <span/>;
+    if (selectedNetwork && selectedNetwork !== '5') {
+      wrongNetworkDisplay = <div>You are in the wrong network. Please switch to Goerli testnet.</div>
+    }
     if (selectedNetwork === '5') {
         networkString = <div>Goerli Network</div>
     }
@@ -19,7 +22,7 @@ export default class TopNavbar extends Component {
     return (
       <div>
       <Navbar expand="lg" fixed="top">
-        <Navbar.Brand href="#home">SuperFluid Marketing Campaigns</Navbar.Brand>
+        <Navbar.Brand href="/">SuperFluid Marketing Campaigns</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -28,6 +31,7 @@ export default class TopNavbar extends Component {
           </Nav>
         </Navbar.Collapse>
         <div>
+         {wrongNetworkDisplay}
          {networkString}
          {addressString}
         </div>

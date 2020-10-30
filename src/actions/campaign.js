@@ -11,6 +11,9 @@ export const SUBMIT_JOIN_CAMPAIGN = 'SUBMIT_JOIN_CAMPAIGN';
 export const SUBMIT_JOIN_CAMPAIGN_SUCCESS = 'SUBMIT_JOIN_CAMPAIGN_SUCCESS';
 export const SUBMIT_JOIN_CAMPAIGN_FAILURE = 'SUBMIT_JOIN_CAMPAIGN_FAILURE';
 
+export const APPROVAL_SUCCESS = 'APPROVAL_SUCCESS';
+export const APPROVAL_PENDING = 'APPROVAL_PENDING';
+
 const API_SERVER = process.env.REACT_APP_API_SERVER;
 
 
@@ -77,5 +80,17 @@ export function submitJoinCampaignFailure(err) {
   return {
     type: SUBMIT_JOIN_CAMPAIGN_FAILURE,
     payload: err
+  }
+}
+
+export function approvalPending() {
+  return {
+    type: APPROVAL_PENDING
+  }
+}
+
+export function approvalSuccess() {
+  return {
+    type: APPROVAL_SUCCESS,
   }
 }

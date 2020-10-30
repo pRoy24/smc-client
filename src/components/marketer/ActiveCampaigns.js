@@ -9,15 +9,21 @@ class ActiveCampaigns extends Component {
     let campignsList = <span/>;
     if (campaignList && campaignList.length > 0) {
       campignsList = campaignList.map(function(item, idx){
-        console.log(item);
         return <ListGroupItem className="list-group-item-menu">
           <Link to={`/app/campaign/${item._id}`}>
-          <div>{item.marketLink}</div>
+          <Row>
+            <Col lg={6}>
+             Posted by {item.publisherWalletAddress}
+            </Col>
+            <Col lg={6}>
+              Link to promote {item.marketLink}
+            </Col>
+          </Row>
           <div>Engagement Payouts</div>
           <Row>
-          <Col lg={3}>{item.retweetPayout} per Retweet</Col>
-          <Col lg={3}>{item.likePayout} per Like</Col>
-          <Col lg={3}>{item.commentPayout} per Comment</Col>
+          <Col lg={3}>{item.retweetPayout} xDai per Retweet</Col>
+          <Col lg={3}>{item.likePayout} xDai per Like</Col>
+          <Col lg={3}>{item.commentPayout} xDai per Comment</Col>
           </Row>
           <Row>
             <Col lg={12}>
@@ -31,7 +37,7 @@ class ActiveCampaigns extends Component {
     return (
       <div>
 
-        <ListGroup>
+        <ListGroup className="app-list-group">
           {campignsList}
         </ListGroup>      
       </div>

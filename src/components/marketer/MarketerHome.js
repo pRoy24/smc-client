@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Form, ListGroup, ListGroupItem, Row, Col} from 'react-bootstrap';
+import {Form, ListGroup, ListGroupItem, Row, Col, Container} from 'react-bootstrap';
 import {Link, Switch, Router, Route} from 'react-router-dom';
 import ActiveCampaigns from './ActiveCampaigns';
 import JoinCampaign from './JoinCampaign';
 import MyCampaigns from './MyCampaigns';
+import './marketer.scss';
 
 export default class MarketerHome extends Component {
   componentWillMount() {
@@ -11,7 +12,7 @@ export default class MarketerHome extends Component {
   }
   render() {
     return (
-      <div>
+      <Container>
         <Row className="tab-header">
           <Col lg={2}>
             <Link to="/app/campaign">Open Campaigns</Link>
@@ -32,7 +33,7 @@ export default class MarketerHome extends Component {
           </Route>
 
         </Switch>
-      </div>
+      </Container>
       )
   }
 }

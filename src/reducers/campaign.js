@@ -1,11 +1,13 @@
 import {FETCH_OPEN_CAMPAIGNS, FETCH_OPEN_CAMPAIGNS_SUCCESS, FETCH_OPEN_CAMPAIGNS_FAILURE, FETCH_CURRENT_CAMPAIGN, FETCH_CURRENT_CAMPAIGN_SUCCESS,
-  FETCH_CURRENT_CAMPAIGN_FAILURE, SUBMIT_JOIN_CAMPAIGN,SUBMIT_JOIN_CAMPAIGN_SUCCESS, SUBMIT_JOIN_CAMPAIGN_FAILURE
+  FETCH_CURRENT_CAMPAIGN_FAILURE, SUBMIT_JOIN_CAMPAIGN,SUBMIT_JOIN_CAMPAIGN_SUCCESS, SUBMIT_JOIN_CAMPAIGN_FAILURE, APPROVAL_PENDING,
+  APPROVAL_SUCCESS
 } from '../actions/campaign';
 
 const initialState = {
   campaignList: [],
   currentCampaign: {},
   joinCampaignSubmitting: false,
+  approvalPending: false
 }
 
 export default function campaignReducer (state = initialState, action) {
@@ -29,6 +31,10 @@ export default function campaignReducer (state = initialState, action) {
       return {...state, joinCampaignSubmitting: false}
     case SUBMIT_JOIN_CAMPAIGN_FAILURE:
       return {...state, joinCampaignSubmitting: false}
+    case APPROVAL_PENDING:
+      return {...state, approvalPending: true}
+    case APPROVAL_SUCCESS:
+      return {...state, approvalPending: false}
     default:
       return state;
   }      

@@ -90,14 +90,11 @@ export default class AppHome extends Component {
         <TopNavBarContainer/>
         <Container className="app-content-container">
         <Switch>
-          <Route exact path="/app/campaign">
-            <PublisherHomeContainer/>
+          <Route path="/app/campaign">
+            <MarketerHomeContainer/>
           </Route>
           <Route path="/app/publisher">
             <PublisherHomeContainer/>
-          </Route>
-          <Route path="/app/campaign">
-            <MarketerHomeContainer/>
           </Route>
         </Switch>
         </Container>

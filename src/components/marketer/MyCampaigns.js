@@ -19,8 +19,37 @@ export default class MyCampaigns extends Component {
           return item;
         }
       }).map(function(item, idx){
-        return <ListGroupItem>
+        console.log(item);
+        const myMarketItem = item.marketers.find(function(fItem, fIdx){
+          return web3.utils.toChecksumAddress(fItem.userAddress) === web3.utils.toChecksumAddress(selectedAddress);
+        });
+        return <ListGroupItem className="list-group-item-menu">
           <Link to={`/app/campaign/${item._id}`}>
+          <Row>
+            <Col lg={4}>
+              Publication link 
+            </Col>
+            <Col lg={8}>
+            {item.marketLink}
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={4}>
+              My marketing link 
+            </Col>
+            <Col lg={8}>
+              {myMarketItem.campaignLink}
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={4}>
+              My total payouts
+            </Col>
+            <Col l={8}>
+              {myMarketItem.previous_payout} xDai
+            </Col>
+          </Row>
+          
           <div>{item.marketLink}</div>
           <div>Engagement Payouts</div>
           <Row>
@@ -35,10 +64,10 @@ export default class MyCampaigns extends Component {
     }
     return (
       <div>
-        <div>
-          Open Campaigns
+        <div className="text-center h4">
+          My Campaigns
         </div>
-        <ListGroup>
+        <ListGroup className="app-list-group">
           {campaignsFilteredList}
         </ListGroup>      
       </div>
