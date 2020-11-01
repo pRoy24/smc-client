@@ -26,8 +26,12 @@ class NewCampaign extends Component {
   }
   
   componentWillReceiveProps(nextProps) {
-    const {publisher: {currentAccount, newAccountAdding, generatingFunds}} = nextProps;
+    const {publisher: {currentAccount, newAccountAdding, generatingFunds, campaignDetailsSubmitting}} = nextProps;
     const {history} = this.props;
+    
+    if (this.props.publisher.campaignDetailsSubmitting && !campaignDetailsSubmitting) {
+      history.replace('/app/publisher/list_active');
+    }
 
     if (this.props.publisher.newAccountAdding && !newAccountAdding) {
       
@@ -46,7 +50,7 @@ class NewCampaign extends Component {
     return (
       <div>
         <div>
-          <div>A new campaign allows you to specify a link that others can promote on Twitter.</div>
+          <div>A new campaign publication allows you to specify a link that others can promote on Twitter.</div>
           <div>You can specify the payout rewards for engagement metrics on the Tweet</div>
           <div>The payouts will be made seamlessly according to the specified payout parameters and interval using SuperFluid finance.</div>
         </div>
@@ -61,7 +65,7 @@ class NewCampaign extends Component {
     return (
       <div>
         <div>Your publication wallet address is {publisher.currentAccount ? publisher.currentAccount : ''}</div>
-        <div>Fund this account with Test ether <a href="https://goerli-faucet.slock.it/">here</a></div>
+        <div>Fund this account with Test ether <a href="https://goerli-faucet.slock.it/" target="_blank">here</a></div>
         <div>(Please wait until the transaction is confirmed before proceeding)</div>
         <div>Now let's fund your campaign.</div>
         <Button onClick={this.generateTestDai}>Generate xDai</Button>
@@ -107,6 +111,8 @@ class CampaignDetails extends Component {
     payload.publisherUserAddress = selectedAddress;
     
     this.props.submitCampaignDetails(payload);
+    
+    
   }
   render() {
     const {marketLink,payoutInterval, payoutIntervalUnit, likePayout, retweetPayout, commentPayout} = this.state;
@@ -169,9 +175,9 @@ class CampaignDetails extends Component {
                 </Dropdown.Toggle>
               
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  <Dropdown.Item href="#/action-1">Hours</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Days</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Months</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
              </Col>

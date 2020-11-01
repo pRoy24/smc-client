@@ -3,6 +3,9 @@ import {withRouter, Link} from 'react-router-dom';
 import {Row, Col, ListGroup, ListGroupItem} from 'react-bootstrap';
 
 export default class MyCampaigns extends Component {
+  componentWillMount() {
+    this.props.fetchOpenCampaigns();
+  }
   render() {
     const {campaign: {campaignList}, user: {selectedAddress}} = this.props;
 

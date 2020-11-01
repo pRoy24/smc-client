@@ -27,11 +27,11 @@ export default class PublisherHome extends Component {
       <div className="">
        <Row className="tab-header">
          <Col lg={2}>
-           <Link to="/app/publisher/list_active">Active Campaigns</Link>
+           <Link to="/app/publisher/list_active">Active Publications</Link>
          </Col>
  
          <Col lg={{span: 2, offset: 8}}>
-           <Link to="/app/publisher/create">New Campaign</Link>
+           <Link to="/app/publisher/create">New Publication</Link>
          </Col>
        </Row>
        <Row>

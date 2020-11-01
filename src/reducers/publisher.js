@@ -9,6 +9,7 @@ const initialState = {
   newAccountAdding: false,
   generatingFunds: false, 
   currentPublisher: {},
+  campaignDetailsSubmitting: false
 }
 
 
@@ -34,6 +35,10 @@ export default function publisherReducer (state = initialState, action) {
       currentPublisherInState = state.currentPublisher;
       currentPublisherInState.accountFlow = action.payload.data;
       return {...state, currentPublisher: currentPublisherInState}
+    case SUBMIT_CAMPAIGN_DETAILS:
+      return {...state, campaignDetailsSubmitting: true}
+    case SUBMIT_CAMPAIGN_DETAILS_SUCCESS:
+      return {...state, campaignDetailsSubmitting: false}
     default:
 
       return state
